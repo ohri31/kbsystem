@@ -1,0 +1,106 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="css/cssgridframework.css">
+        <link rel="stylesheet" href="css/main.css">
+
+    </head>
+    <body class="landing-bg">
+      <div class="menu">
+        <div class="cont">
+          <div class="row">
+            <div class="col norm-4 np">
+              <ul>
+                <a href="index.html">
+                  <img src="img/logo-w.png" style="height:36px;margin-top:12px;" />
+                </a>
+                <li id="smore" class="show-more"> <a href="javascript:toggle_menu('hidden-menu')">&#9776;</a> </li>
+
+                <div id="hidden-menu" class="items move-right collapse">
+                  <li><a  href="liftoff.html">Lift off?</a></li>
+                  <li><a href="pricing.html">Pricing</a></li>
+                  <li><a href="create.html">Try</a></li>
+                  <div class="clearfix"></div>
+                </div>
+
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="create" style="margin-top:60px;">
+        <div class="cont">
+          <div class="row">
+            <div class="col norm-1 tab-4 mob-4">
+              <div class="side-menu">
+                <a href="create.html">Create article</a>
+                <a href="article.html">Random article</a>
+                <a href="index.html">Log out</a>
+              </div>
+            </div>
+            <div class="col norm-3 tab-4 mob-4" style="padding-top:15px;padding-bottom:15px;">
+              <form action="" method="post">
+                <label class="move-left mb5">Article title:</label>
+                <input type="text" class="form-el form-input fill-up mb15" name="e-mail" placeholder="Enter article title (recommended: 70-100 characters)" />
+
+                <label class="move-left mb5">Brief description:</label>
+                <textarea class="form-el form-input fill-up mb15" name="description" placeholder="Brief description about the article" style="height:80px;"></textarea>
+
+                <label class="move-left mb5">Knowledge base:</label>
+                <select class="form-el form-select fill-up mb15" name="kb">
+                  <option value="0" disabled selected="">Select knowledge base</option>
+                  <option value="1">Dummy KB Library</option>
+                  <option value="2">Public library</option>
+                </select>
+
+                <label class="move-left mb5">Category/Section:</label>
+                <select class="form-el form-select fill-up mb15" name="category">
+                  <option value="0" disabled selected="">Select desired section:</option>
+                  <option value="1">Web development</option>
+                  <option value="2">Web design</option>
+                  <option value="3">Fund raising</option>
+                  <option value="4">Marketing</option>
+                  <option value="5">Social media</option>
+                </select>
+
+                <label class="move-left mb5">Content:</label>
+                <textarea class="form-el form-input fill-up mb15" name="content" placeholder="Brief description about the article" style="height:200px;"></textarea>
+
+
+                <input type="submit" value="Save and publish" class="btn btn-green move-right wtm stmr0"/>
+                <a href="#" class="btn btn-white move-right mr15 stmr0 wtm">Save as draft</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+        <div class="clearfix"></div>
+
+
+      <section class="footer">
+        <div class="cont">
+          <div class="row">
+            <div class="col norm-3 tab-4 mob-4">
+              <a href="pricing.html">Pricing</a>
+              <a href="liftoff.html">Login</a>
+              <a href="create.html">Create</a>
+              <a href="article.html">Random article</a>
+            </div>
+            <div class="col norm-1 tab-4 mob-4">
+              <img src="img/logo-b.png" class="move-right" style="height:36px;margin-top:22px;" />
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </section>
+
+        <script src="js/main.js"></script>
+    </body>
+</html>
