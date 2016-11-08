@@ -3,7 +3,7 @@ Knowledge base system namijenjen kompanijama i organizacijama i njegov glavni ci
 
 Mirza Ohranovic (Broj indeksa: 17063)
 
-Spirala I
+<h2>Spirala I</h2>
   
   I) Urađeno:
   
@@ -25,6 +25,7 @@ Spirala I
       * Ništa nije primjećeno
       
    V) Lista fajlova:
+   
       * index.html - Početna stranica, cover, osnovne informacije, CTA (Call to action)
       * article.html - Izgled članka/posta sa Lorem ipsum tekstom
       * create.html - Forma za kreiranje članka/posta
