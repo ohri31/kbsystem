@@ -17,6 +17,7 @@
   display: block;
   height:100vh;
   background: #2b2e3b;
+  overflow:hidden;
 }
 
 .cover h2{
@@ -152,6 +153,20 @@
 .side-menu a:last-child{
   border-bottom: 0;
 }
+
+.side-menu .drop-down{
+  background:#f0f0f0;
+  display: none;
+}
+
+.side-menu .drop-down a{
+  padding-left: 45px;
+  border-bottom: 1px solid #c3c3c3;
+}
+
+.side-menu .drop-down a:last-child{
+  border-bottom: 0;
+}
 /* endof side menu css */
 
 /* Article */
@@ -176,6 +191,26 @@
   line-height: 24px;
 }
 /*endof article */
+
+.error-text{
+  font-size: 12px;
+  text-align: left!important;
+  color:#e74c3c!important;
+  margin-bottom: 10px;
+  display: block;
+  width: 100%;
+}
+
+/* coarousel */
+.carousel-holder{
+  width: 300vw;
+}
+.carousel-slide{
+  width: 100vw;
+  float: left;
+}
+
+
 
 /* Resp */
 @media only screen and (max-width : 768px) {
