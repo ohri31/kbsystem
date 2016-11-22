@@ -22,3 +22,24 @@ Spirala I
       * img/* - grafika (logoi: bijeli i crni, cover slika i vspace logo)
       * css/cssgridframework.css (grid framework sa 4 kolone, input elementi forme, buttoni)
       * css/main.css (style svih elemenata koji ne ulaze u grid framwork)
+
+Spirala II
+  I) Urađeno:
+      * Napravljena validacija na formama: registracija, login i unos clanka 
+      * Napravljeno učitavanje putem Ajaxa (potreban http)
+      * Implementiran self-moving carousell na landing page-u 
+      * Implementiran padajući meni na resposnive verziji
+      * Implementiran Treeview na prvom linku kod side-menija na Article i Create
+  II) Nije urađeno:
+      * Galerija i localstorage (obzirom da carousell, padajući meni i treveiw jeste)
+  III & IV) Bugovi:
+      * Landing page, kada se ode s tog taba i ostavi da carousell sam scroll-a, te kada se vrati nazad na taj tab, carousell poremeti scroll
+  V) Lista fajlova:
+      * partials/* - Sve podstranice koje se učitavaju
+      * .dumpedfiles/* - Svi dokumenti koji se više ne koriste (zbog ajaxa)
+      * js/main.js - Glavni JS fajl, osnovne funkcije, padajući meni 
+      * js/spa.js - Ajax fajl, funckija i inicijalni poziv
+      * js/slider.js - Carousell sa landing page-a 
+      * js/validation.js - Validacija formi
+
+	
