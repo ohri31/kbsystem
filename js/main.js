@@ -1,4 +1,4 @@
-function toggle_menu(id) {
+0+4function toggle_menu(id) {
     var e = document.getElementById(id);
     var showbtn = document.getElementById('smore');
 

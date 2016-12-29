@@ -1,3 +1,9 @@
+<?php
+    require_once('models/article.php');
+
+    require_once('controllers/MainController.php');
+    require_once('controllers/ArticleController.php');
+?>
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -25,9 +31,7 @@
                         <li id="smore" class="show-more"> <a href="javascript:toggle_menu('hidden-menu')">&#9776;</a> </li>
 
                         <div id="hidden-menu" class="items move-right collapse">
-                            <li><a href="javascript:loadPartial('partials/landing/liftoff.html')">Lift off?</a></li>
-                            <li><a href="javascript:loadPartial('partials/landing/pricing.html')">Pricing</a></li>
-                            <li><a href="javascript:loadPartial('partials/user/create.html')">Try</a></li>
+                            <?php require_once('partials/menu.php'); ?>
                             <div class="clearfix"></div>
                         </div>
 
@@ -39,7 +43,7 @@
 
     <!-- Partials load container -->
     <div id="partials-container">
-
+        <?php require_once('partials/user/articles.php'); ?>
     </div>
 
     <section class="footer">

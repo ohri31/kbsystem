@@ -247,3 +247,10 @@
   .footer img{display: none!important;}
 
 }
+
+.article-item{
+  width: 100%;
+  border-bottom: 1px solid #d1d1d1;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}

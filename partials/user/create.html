@@ -3,19 +3,15 @@
     <div class="row">
       <div class="col norm-1 tab-4 mob-4">
         <div class="side-menu">
-          <a id="ca-tv" href="javascript:treeView(document.getElementById('ca-tv'))">Create article</a>
-          <div class="drop-down">
-            <a href="javascript:loadPartial('partials/user/create.html')">Regular article</a>
-            <a href="javascript:loadPartial('partials/user/create.html')">Code article</a>
-          </div>
-          <a href="javascript:loadPartial('partials/user/article.html')">Random article</a>
-          <a href="javascript:loadPartial('partials/landing/index.html')">Log out</a>
+          <a id="ca-tv" href="create.php">Create article</a>
+          <a href="articles.php">KB Articles</a>
+          <a href="logout.php">Log out</a>
         </div>
       </div>
       <div class="col norm-3 tab-4 mob-4" style="padding-top:15px;padding-bottom:15px;">
         <form action="" method="post">
           <label class="move-left mb5">Article title:</label>
-          <input type="text" id="content-title" class="form-el form-input fill-up mb15" name="e-mail" placeholder="Enter article title (recommended: 70-100 characters)" />
+          <input type="text" id="content-title" class="form-el form-input fill-up mb15" name="title" placeholder="Enter article title (recommended: 70-100 characters)" />
           <span class="error-text"></span>
             <div class="clearfix"></div>
 
@@ -50,9 +46,7 @@
           <span class="error-text"></span>
             <div class="clearfix"></div>
 
-
-          <input type="submit" value="Save and publish" onclick="validateCreate()" class="btn btn-green move-right wtm stmr0"/>
-          <a href="#" class="btn btn-white move-right mr15 stmr0 wtm">Save as draft</a>
+          <input type="submit" name="create" value="Save and publish" onclick="validateCreate()" class="btn btn-green move-right wtm stmr0"/>
         </form>
       </div>
     </div>

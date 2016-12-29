@@ -88,15 +88,16 @@ function validateRegister() {
 }
 
 function validateCreate() {
-    event.preventDefault();
     var gv = true;
 
     /* Vlaidation content */
-    if (!magicValidate("Article title", document.getElementById('content-title'), 120, false, null, null, true)) gv = false;
-    if (!magicValidate("Article description", document.getElementById('content-description'), 280, false, null, null, true)) gv = false;
+    if (!magicValidate("Article title", document.getElementById('content-title'), 0, false, null, null, true)) gv = false;
+    if (!magicValidate("Article description", document.getElementById('content-description'), 0, false, null, null, true)) gv = false;
     if (!magicValidate("Content", document.getElementById('content-body'), 0, false, null, null, true)) gv = false;
     if (!selectValidate("Knowledge base", document.getElementById("content-kb"))) gv = false;
     if (!selectValidate("Category", document.getElementById("content-category"))) gv = false;
+
+    console.log(gv);
 
     if (!gv) event.preventDefault();
 }

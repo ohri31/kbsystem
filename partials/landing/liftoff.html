@@ -20,7 +20,7 @@
         <div class="det">
           <form action="" method="post">
             <label class="move-left mb5">E-mail:</label>
-            <input type="text" id="register-email" class="form-el form-input fill-up mb15" name="e-mail" placeholder="Enter your e-mail adress" />
+            <input type="text" id="register-email" class="form-el form-input fill-up mb15" name="email" placeholder="Enter your e-mail adress" />
             <span class="error-text"></span>
               <div class="clearfix"></div>
 
@@ -35,11 +35,11 @@
               <div class="clearfix"></div>
 
             <label class="move-left mb5">Organisation/Company name:</label>
-            <input type="text" id="register-organisation" class="form-el form-input fill-up mb15" name="name" placeholder="Enter your organisation/company name" />
+            <input type="text" id="register-organisation" class="form-el form-input fill-up mb15" name="organisation" placeholder="Enter your organisation/company name" />
             <span class="error-text"></span>
               <div class="clearfix"></div>
 
-            <input type="submit" onclick="validateRegister()" class="btn btn-green move-right wtm" value="Register" />
+            <input type="submit" onclick="validateRegister()" name="register" class="btn btn-green move-right wtm" value="Register" />
           </form>
         </div>
       </div>
@@ -49,7 +49,7 @@
         <div class="det">
           <form action="" method="post">
             <label class="move-left mb5">E-mail:</label>
-            <input type="text" id="login-email" class="form-el form-input fill-up mb15 e-mailval" name="e-mail" placeholder="Enter your e-mail adress" />
+            <input type="text" id="login-email" class="form-el form-input fill-up mb15 e-mailval" name="email" placeholder="Enter your e-mail adress" />
             <span class="error-text"></span>
               <div class="clearfix"></div>
 
@@ -58,7 +58,7 @@
             <span class="error-text"></span>
               <div class="clearfix"></div>
 
-            <input type="submit" onclick="validateLogin()" class="btn btn-green move-right wtm" value="Login" />
+            <input type="submit" onclick="validateLogin()" name="login" class="btn btn-green move-right wtm" value="Login" />
             <a href="#" class="move-right mr15 mt15 wtm" style="display:block;">Forgot password?</a>
           </form>
         </div>
