@@ -1,6 +1,10 @@
 <?php
-	header('HTTP/1.0 200 Bad Request', true, 200);
 	session_start();
+
+	error_reporting(E_ALL);
+ 	ini_set('display_errors',1);
+	ini_set('display_startup_errors',1);
+ 	error_reporting(-1);
 
 	/* Authentication regulation */
 	$current = basename($_SERVER["SCRIPT_FILENAME"], '.php').".php";	
