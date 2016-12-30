@@ -1,4 +1,5 @@
 <?php
+	set_time_limit(30);
 	session_start();
 
 	error_reporting(E_ALL);
