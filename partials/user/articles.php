@@ -12,7 +12,9 @@
         <div class="side-menu">
           <a id="ca-tv" href="create.php">Create article</a>
           <a href="articles.php">KB Articles</a>
-          <a href="logout.php">Log out</a>
+          <?php if(isset($_SESSION['user'])){ ?>
+            <a href="logout.php">Log out</a>
+          <?php } ?>
         </div>
       </div>
       <div class="article col norm-3 tab-4 mob-4" style="padding-top:15px;padding-bottom:15px;">

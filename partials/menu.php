@@ -6,5 +6,5 @@
 <?php }else{ ?> 
 	<li><a href="liftoff.php">Lift off?</a></li>
 	<li><a href="pricing.php">Pricing</a></li>
-	<li><a href="search.php">Search</a></li>
+	<li><a href="articles.php">Search</a></li>
 <?php } ?>
