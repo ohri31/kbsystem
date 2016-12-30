@@ -1,7 +1,7 @@
 <?php
-    require_once('models/article.php');
-
     require_once('controllers/MainController.php');
+    
+    require_once('models/article.php');
     require_once('controllers/ArticleController.php');
 ?>
 <!doctype html>
