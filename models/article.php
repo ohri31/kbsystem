@@ -115,7 +115,7 @@ class Article{
 	}
 
 	public function listArticles($term = null){
-		$document = simplexml_load_file("data/xml/articles.xml");
+		$document = simplexml_load_file($_SERVER["DOCUMENT_ROOT"]."data/xml/articles.xml");
 
 		if($document == null){
 			echo "No articles";
