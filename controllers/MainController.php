@@ -1,4 +1,5 @@
 <?php
+	header('HTTP/1.0 200 Bad Request', true, 200);
 	session_start();
 
 	/* Authentication regulation */
