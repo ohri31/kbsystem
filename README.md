@@ -63,5 +63,53 @@ Mirza Ohranovic (Broj indeksa: 17063)
       * js/slider.js - Carousell sa landing page-a
       * js/validation.js - Validacija formi
 
+<h2>Spirala III</h2>
+
+    I) Urađeno:
+    
+        * Kreirana sljedeća arhitektura:
+            * Controllers/* - kontroleri za rad sa podacima 
+                - AuthController - login i registracija 
+                - MainController - autorizacija pristupa fajlovima
+                - ArticleController - CRUD operacije sa člancima
+            * Models/* - PHP klase, modeli koji se koriste unutar sistema 
+                - article.php - model članka, definicija metoda CRUD, kao definicije dodtnih metoda za ispis i obradu
+                - user.php - model korisnika, definicija metoda za registraciju i login
+                
+        * U skolupu ove arhitekture napravljeno:
+            * Serijalizacija podataka u XML --- liftoff.php (USER), create.php, edit.php (ARTICLE)
+            * Učitavanje podataka iz XML-a --- articles.php, article.php (ARTICLE)
+            * Logovani korisnik (admin) može raditi editovanje i kreiranje podataka
+            * Nakon logina, u meniju se pojavljuje ocpija "DOWNLOAD CSV" 
+            * Nakon logina, u meniju se pojavljuje opcija "DOWNLOAD PDF"
+            * Pretraga u sklopu Articles.php
+                * Unosom riječi pretražuju se svi articles u bazi
+                * Tražene riječi se boldiraju
+                * Moguće je pokrenuti i pretragu koja nije u realtime-u
+        * Web stranica je deployana na Heroku https://agile-cove-66292.herokuapp.com/ ali postoji određeni problem kada se učitavaju određene podstranice
+        
+      II) Nije urađeno:
+       
+        --
+        
+      III & IV) Bugovi:
+    
+        --
+       
+      V) Fajlovi:
+      
+        controllers/* - kontroleri podataka
+        models/* - modeli podataka
+        data/* - svi pdf, csv, xml fajlovi
+        fpdf/* - fdpf biblioteka
+        * ukinuto AJAX_SPA
+            - create.php - kreiranje clanka
+            - edit.php - editovanje clanka
+            - articles.php - izlistavanje i pretraga clanaka
+            - article.php - clanak pojedinacno
+            - csv.php - generisanje i download csv fajla
+            - pdf.php - generisanje i donwload pdf fajla
+            - services.php - pozadinski servisi za pretragu
+            
 
 
