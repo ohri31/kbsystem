@@ -210,8 +210,11 @@ class Article{
 		}
 
 		$ars = array();
+		whiel($row = $article->fetch_assoc()){
+			$ars[] = $row;
+		}
 
-		print("{ \"articles\": " . json_encode($articles->fetch_all(), JSON_PRETTY_PRINT) . "}");
+		print("{ \"articles\": " . json_encode($ars, JSON_PRETTY_PRINT) . "}");
 		
 	}
 
