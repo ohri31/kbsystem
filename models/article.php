@@ -210,7 +210,7 @@ class Article{
 		}
 
 		$ars = array();
-		while($row = $article->fetch_assoc()){
+		while($row = $articles->fetch_assoc()){
 			$ars[] = $row;
 		}
 
