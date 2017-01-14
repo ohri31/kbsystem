@@ -211,7 +211,7 @@ class Article{
 
 		$ars = array();
 
-		print("{ \"articles\": " . json_encode($articles->fetch_assoc()) . "}");
+		print("{ \"articles\": " . json_encode($articles->fetch_assoc(), JSON_PRETTY_PRINT) . "}");
 		
 	}
 

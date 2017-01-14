@@ -20,7 +20,7 @@
 				die("ERROR");
 				break;
 		}
-	}else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+	}else if (isset($_POST)) {
 		/* Search */
 		if(isset($_POST['term'])){
 			$term = $_POST['term'];
@@ -28,5 +28,7 @@
 			$article = new Article;
 			$article->listArticles($term);
 		}
-	}else die('Not ajax!!!');
+	}else{
+		header("{$_SERVER['SERVER_PROTOCOL']} 404 Not Found");
+	}
 ?>
