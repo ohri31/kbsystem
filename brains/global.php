@@ -1,8 +1,8 @@
 <?php
 	/*Konfiguracijski fajl */
-	$DB_HOST = "mysql-55-centos7-1-hexdh";
-	$DD_USER = "root";
-	$DB_PASS = "";
+	$DB_HOST = "mysql-55-centos7";
+	$DD_USER = "ohri";
+	$DB_PASS = "ohriohri";
 	$DB_NAME = "vrocket";
 
 	$db = new mysqli($DB_HOST, $DD_USER, $DB_PASS, $DB_NAME);
