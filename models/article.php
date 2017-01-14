@@ -10,15 +10,11 @@ class Article{
 
 	/* Public functions */
 	public function create($array){
-		/* ne dati da se ubaci > ili < */
-		foreach($array as $a => $b){
-			$helper = str_replace("<", "", $b);
-			$helper = str_replace(">", "", $helper);
-		 	$array[$a] = $helper;
-		}
+		global $db;
+		foreach($array as $a => $b) $array[$a] = $db->escape_string($b);
 
 		/* Napravi dokument ili učitaj ako već postoji */
-		if(!file_exists("data/xml/articles.xml")){
+		/*if(!file_exists("data/xml/articles.xml")){
 		 	$document = new SimpleXMLElement('<root/>');
 		 	$document->asXML("data/xml/articles.xml");
 		}
@@ -28,7 +24,7 @@ class Article{
     	self::generateId($document);
 
     	/* Spremanje podataka */
-    	$root = $document;
+    	/*$root = $document;
 
     	$article = $root->addChild('article');
     	$article->addChild('_id', $this->id);
@@ -38,7 +34,11 @@ class Article{
     	$article->addChild('category', $array['category']);
     	$article->addChild('content', $array['content']);
 
-    	$document->asXML("data/xml/articles.xml");
+    	$document->asXML("data/xml/articles.xml");*/
+
+    	$prep = $db->prepare("INSERT INTO article (title, description, kb, category, content, autor) VALUES (?, ?, ?, ?, ?, ?)");
+    	$prep->bind_param("ssddsd", $array['title'], $array['description'], $array['kb'], $array['category'], $array['content'], $_SESSION['user']['id']);
+    	$prep->execute();
 
 		header('Location: articles.php');
 		die();
@@ -46,7 +46,7 @@ class Article{
 
 
 	public function read($id){
-		$document = simplexml_load_file("data/xml/articles.xml");
+		/*$document = simplexml_load_file("data/xml/articles.xml");
 
 		if($document == null){
 			die("Nothing to read here. Go back!");
@@ -61,12 +61,23 @@ class Article{
 				$this->category 	= $article->category;
 				$this->content 		= nl2br(htmlspecialchars($article->content));
 			}
-		}
+		}*/
+
+		global $db;
+		$id = (int)$id;
+		$res = $db->query("SELECT * FROM article WHERE _id = {$id} LIMIT 0,1")->fetch_assoc();
+
+		$this->id 			= $id;
+		$this->title 		= $res['title'];
+		$this->description 	= nl2br(htmlspecialchars($res['description']));
+		$this->kb 			= $res['kb'];
+		$this->category 	= $res['category'];
+		$this->content 		= nl2br(htmlspecialchars($res['content']));
 	}
 
 	public function update($array){
 		/* Check everything */
-		foreach($array as $a => $b){
+		/*foreach($array as $a => $b){
 			$helper = str_replace("<", "", $b);
 			$helper = str_replace(">", "", $helper);
 		 	$array[$a] = $helper;
@@ -89,13 +100,19 @@ class Article{
 			}
 		}
 
-		$document->asXML("data/xml/articles.xml");
+		$document->asXML("data/xml/articles.xml");*/
+		global $db;
+		foreach($array as $a => $b) $array[$a] = $db->escape_string($b);
+
+		$prep = $db->prepare("UPDATE article SET title = ?, description = ?, kb = ?, category = ?, content = ? WHERE _id = {$this->id}");
+		$prep->bind_param("ssdds", $array['title'], $array['description'], $array['kb'], $array['category'], $array['content']);
+		$prep->execute();
 
 		header('Location: articles.php');
 	}
 
 	public function delete(){
-		$document = simplexml_load_file("data/xml/articles.xml");
+		/*$document = simplexml_load_file("data/xml/articles.xml");
 
 		if($document == null){
 			echo "Nothing to delete";
@@ -109,18 +126,22 @@ class Article{
 			}
 		}
 
-		$document->asXML("data/xml/articles.xml");
+		$document->asXML("data/xml/articles.xml");*/
+		global $db;
+
+		$db->query("DELETE FROM article WHERE _id = {$this->id}");
 
 		header('Location: articles.php');
 	}
 
 	public function listArticles($term = null){
-		$document = simplexml_load_file("/data/xml/articles.xml");
+		/*$document = simplexml_load_file("/data/xml/articles.xml");
 
 		if($document == null){
 			echo "No articles";
 			return;
-		}
+		}*/
+		global $db;
 
 		$kbs = array(
     		0 => "Undefined",
@@ -138,50 +159,60 @@ class Article{
     	);
 
 		if($term == null){
-			foreach($document->article as $article){
+			$articles = $db->query("SELECT * FROM article");
+		}else{
+			$term = $db->escape_string($term);
+			$articles = $db->query("SELECT * FROM article WHERE LOWER(title) LIKE LOWER('{$term}%') OR LOWER(description) LIKE LOWER('{$term}%')");
+		}
+
+		if($articles->num_rows != 0){
+			while($row = $articles->fetch_assoc()){
 				?> 
 				<div class="article-item">
-					<a href="article.php?id=<?=$article->_id;?>"><h3><?=$article->title;?></h3></a>
-					<p style="font-size: 13px;color:#d5d5d5;line-height: 18px;margin-bottom: 5px;"><?=$article->description;?></p>
-					<p><?=$kbs[(int)$article->kb];?> | <?=$cats[(int)$article->category];?></p>
+					<a href="article.php?id=<?=$row['_id'];?>"><h3><?=$row['title'];?></h3></a>
+					<p style="font-size: 13px;color:#d5d5d5;line-height: 18px;margin-bottom: 5px;"><?=htmlspecialchars($row['description']);?></p>
+					<p><?=$kbs[$row['kb']];?> | <?=$cats[$row['category']];?></p>
 				</div>
 				<?php
 			}
+		}else echo "No results.";
+	}
+
+	public function listArticlesJSON($term = null){
+		/*$document = simplexml_load_file("/data/xml/articles.xml");
+
+		if($document == null){
+			echo "No articles";
+			return;
+		}*/
+		global $db;
+
+		$kbs = array(
+    		0 => "Undefined",
+    		1 => "Dummy KB Library",
+    		2 => "Public Library"
+    	);
+
+    	$cats = array(
+    		0 => "Undefined",
+    		1 => "Web development",
+    		2 => "Web design",
+    		3 => "Fund raising",
+    		4 => "Marketing",
+    		5 => "Social media"
+    	);
+
+		if($term == null){
+			$articles = $db->query("SELECT * FROM article");
 		}else{
-			$term 	= strtolower($term);
-			$output = false;
-
-			foreach($document->article as $article){
-				if(preg_match('/^'.$term.'(.*)/', strtolower($article->title))){
-					$output = true;
-					?> 
-					<div class="article-item">
-						<a href="article.php?id=<?=$article->_id;?>"><h3><?=$article->title;?></h3></a>
-						<p style="font-size: 13px;color:#d5d5d5;line-height: 18px;margin-bottom: 5px;"><?=$article->description;?></p>
-						<p><?=$kbs[(int)$article->kb];?> | <?=$cats[(int)$article->category];?></p>
-					</div>
-					<?php
-				}else{
-					$exploded = explode(" ", $article->description);
-					foreach ($exploded as $key => $value) {
-						if(preg_match('/^'.$term.'(.*)/', strtolower($value))){
-							$des = str_replace($value, "<b style='color:#5d5d5d;'>".$value."</b>", $article->description);
-							?> 
-							<div class="article-item">
-								<a href="article.php?id=<?=$article->_id;?>"><h3><?=$article->title;?></h3></a>
-								<p style="font-size: 13px;color:#d5d5d5;line-height: 18px;margin-bottom: 5px;"><?=$des;?></p>
-								<p><?=$kbs[(int)$article->kb];?> | <?=$cats[(int)$article->category];?></p>
-							</div>
-							<?php
-							$output = true;
-							break;
-						}
-					}
-				}
-			}
-
-			if(!$output) echo "Nema rezultata.";
+			$term = $db->escape_string($term);
+			$articles = $db->query("SELECT * FROM article WHERE LOWER(title) LIKE LOWER('{$term}%') OR LOWER(description) LIKE LOWER('{$term}%')");
 		}
+
+		$ars = array();
+
+		print("{ \"articles\": " . json_encode($articles->fetch_assoc()) . "}");
+		
 	}
 
 	/* Private functions */

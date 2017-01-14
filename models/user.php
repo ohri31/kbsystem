@@ -8,7 +8,7 @@ class User{
 
 	public function register($array){
 		/* Napravi dokument ili učitaj ako već postoji */
-		if(!file_exists("data/xml/users.xml")){
+		/*if(!file_exists("data/xml/users.xml")){
 		 	$document = new SimpleXMLElement('<root/>');
 		 	$document->asXML("data/xml/users.xml");
 		}
@@ -16,11 +16,8 @@ class User{
 		$document = simplexml_load_file("data/xml/users.xml");	
 
 		/* Now, I am generating some stuff, probably useful, but who knwos */
-		self::generateId($document);
-		$password = self::encrypt2017($array['password'], $array['email']);
-
     	/* Spremanje podataka */
-    	$root = $document;
+    	/*$root = $document;
 
     	$article = $root->addChild('user');
     	$article->addChild('_id', $this->id);
@@ -29,7 +26,17 @@ class User{
     	$article->addChild('organisation', $array['organisation']);
     	
     	/* Okay, please save, please... */
-    	$document->asXML("data/xml/users.xml");
+    	//$document->asXML("data/xml/users.xml");
+    	global $db;
+
+    	foreach($array as $a => $b) $array[$a] = $db->escape_string($b);
+
+    	self::generateId($document);
+		$password = self::encrypt2017($array['password'], $array['email']);
+
+		$prep = $db->prepare("INSERT INTO user (email, password, organisation) VALUES (?, ?, ?)");
+		$prep->bind_param("sss", $array['email'], $password, $array['organisation']);
+		$prep->execute();
 
     	$credentials = array(
     		"email" 	=> $array['email'],
@@ -44,7 +51,7 @@ class User{
 		/* JK... */
 		/* You should, cause if you pass, I wall also pass the exam */
 		/* LOL */
-		$document = simplexml_load_file("data/xml/users.xml");
+		/*$document = simplexml_load_file("data/xml/users.xml");
 
 		if($document == null) die('Sorry, there are no user registred yet. You wann go back <a href="index.php">home</a>?');
 
@@ -57,6 +64,18 @@ class User{
 					break;
 				}
 			}	
+		}*/
+		global $db;
+
+		foreach($array as $a => $b) $array[$a] = $db->escape_string($b);
+
+		$pass = self::encrypt2017($array['password'], $array['email']);
+
+		$num = $db->query("SELECT * FROM user WHERE email = '{$array['email']}' AND password = '{$pass}' LIMIT 0,1");
+		if($num->num_rows != 0){
+			$fetch = $num->fetch_assoc();
+			$_SESSION['user']['id'] 	= $fetch['_id'];
+			$_SESSION['user']['email']	= $fetch['email'];
 		}
 
 		header('Location: index.php');

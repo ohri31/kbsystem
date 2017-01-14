@@ -1,4 +1,6 @@
 <?php
+	require_once('brains/global.php');
+	
 	require_once('controllers/MainController.php');
 	
 	$document = simplexml_load_file("data/xml/articles.xml");

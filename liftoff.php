@@ -1,4 +1,6 @@
 <?php
+    require_once('brains/global.php');
+    
     require_once('models/user.php');
 
     require_once('controllers/MainController.php');
