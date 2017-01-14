@@ -1,7 +1,7 @@
 <?php
 	/*Konfiguracijski fajl */
-	$DB_HOST = "localhost";
-	$DD_USER = "root";
+	$DB_HOST = "mysql-55-centos7";
+	$DD_USER = "ohri";
 	$DB_PASS = "ohriohri";
 	$DB_NAME = "vrocket";
 
