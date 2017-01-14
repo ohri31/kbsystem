@@ -25,8 +25,14 @@
           <label class="move-left mb5">Knowledge base:</label>
           <select id="content-kb" class="form-el form-select fill-up mb15" name="kb">
             <option value="0" disabled selected="">Select knowledge base</option>
-            <option value="1">Dummy KB Library</option>
-            <option value="2">Public library</option>
+            <?php
+              $kb = $db->query("SELECT * FROM knowledgebase");
+              while($row = $kb->fetch_assoc()){
+                ?>
+                  <option value="<?=$row['_id'];?>"><?=$row['name'];?></option>
+                <?php
+              }
+            ?>
           </select>
           <span class="error-text"></span>
             <div class="clearfix"></div>
@@ -34,11 +40,14 @@
           <label class="move-left mb5">Category/Section:</label>
           <select id="content-category" class="form-el form-select fill-up mb15" name="category">
             <option value="0" disabled selected="">Select desired section:</option>
-            <option value="1">Web development</option>
-            <option value="2">Web design</option>
-            <option value="3">Fund raising</option>
-            <option value="4">Marketing</option>
-            <option value="5">Social media</option>
+            <?php
+              $kb = $db->query("SELECT * FROM category");
+              while($row = $kb->fetch_assoc()){
+                ?>
+                  <option value="<?=$row['_id'];?>"><?=$row['name'];?></option>
+                <?php
+              }
+            ?>
           </select>
           <span class="error-text"></span>
             <div class="clearfix"></div>

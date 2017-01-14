@@ -27,7 +27,7 @@
             <div class="row">
                 <div class="col norm-4 np">
                     <ul>
-                        <a href="javascript:loadPartial('partials/landing/index.html')">
+                        <a href="index.php">
                             <img src="img/logo-w.png" style="height:36px;margin-top:12px;" />
                         </a>
                         <li id="smore" class="show-more"> <a href="javascript:toggle_menu('hidden-menu')">&#9776;</a> </li>
@@ -45,17 +45,16 @@
 
     <!-- Partials load container -->
     <div id="partials-container">
-        <?php require_once('partials/user/create.html'); ?>
+        <?php require_once('partials/user/create.php'); ?>
     </div>
 
     <section class="footer">
         <div class="cont">
             <div class="row">
                 <div class="col norm-3 tab-4 mob-4">
-                    <a href="javascript:loadPartial('partials/landing/pricing.html')">Pricing</a>
-                    <a href="javascript:loadPartial('partials/landing/liftoff.html')">Login</a>
-                    <a href="javascript:loadPartial('partials/user/create.html')">Create</a>
-                    <a href="javascript:loadPartial('partials/user/article.html')">Random article</a>
+                   <?php if(isset($_SESSION['user'])): ?>
+                        <a href="xmltosql.php">XML TO SQL SCRIPT</a>
+                    <?php endif; ?>
                 </div>
                 <div class="col norm-1 tab-4 mob-4">
                     <img src="img/logo-b.png" class="move-right" style="height:36px;margin-top:22px;" />

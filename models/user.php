@@ -76,7 +76,7 @@ class User{
 			$fetch = $num->fetch_assoc();
 			$_SESSION['user']['id'] 	= $fetch['_id'];
 			$_SESSION['user']['email']	= $fetch['email'];
-		}
+		}else header('Location: liftoff.php');
 
 		header('Location: index.php');
 		die();
