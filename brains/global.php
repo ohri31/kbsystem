@@ -1,6 +1,6 @@
 <?php
 	/*Konfiguracijski fajl */
-	$DB_HOST = "=mysql-55-centos7";
+	$DB_HOST = "mysql-55-centos7";
 	$DD_USER = "root";
 	$DB_PASS = "";
 	$DB_NAME = "vrocket";
