@@ -215,7 +215,14 @@ class Article{
 		}
 
 		print("{ \"articles\": " . json_encode($ars, JSON_PRETTY_PRINT) . "}");
-		
+	}
+
+	public function readJSON($id){
+		global $db;
+		$id = (int)$id;
+		$res = $db->query("SELECT * FROM article WHERE _id = {$id} LIMIT 0,1")->fetch_assoc();
+
+		print(json_encode($res, JSON_PRETTY_PRINT));
 	}
 
 	/* Private functions */

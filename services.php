@@ -20,12 +20,16 @@
     			$article = new Article;
 
     			if(isset($_GET['term'])) 	$article->listArticlesJSON($_GET['term']);
+    			else if(isset($_GE['id']))	$article->readJSON($_GET['id']);
     			else 						$article->listArticlesJSON();
 
 				break;
+
+
 			
 			default:
-				die("ERROR");
+				header("{$_SERVER['SERVER_PROTOCOL']} 404 Not Found");
+				die();
 				break;
 		}
 	}else{
