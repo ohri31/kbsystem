@@ -2,7 +2,7 @@
 	require_once('brains/global.php');
 	require_once('models/article.php');
 	/* Services doc */
-	if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+	if (isset($_GET)) {
 		switch ($_GET['service']) {
 			case 'articles':
 				header("{$_SERVER['SERVER_PROTOCOL']} 200 OK");
