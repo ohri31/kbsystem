@@ -111,5 +111,27 @@ Mirza Ohranovic (Broj indeksa: 17063)
             - pdf.php - generisanje i donwload pdf fajla
             - services.php - pozadinski servisi za pretragu
             
+<h2>Spirala IV</h2>
+
+        I) Urađeno:
+            * Napravljena skriptaza prebacivanje iz XML u Bazu (xmltosql.php), link se nalazi u footeru
+            * Kreirana baza podataka sa četiri povezane tabele (dump u root direktoriju, vrocket.sql)
+            * PHP Skripte prepravljene da podatke čuvaji u čitaju iz baze (sav kod se nalazi u modelima /models/*)
+            * Web stranica hostana na OpenShiftu, url: http://vrocket-vrocket.44fs.preview.openshiftapps.com/
+            * Napravljena metoda REST servisa za izlistavanje liste articles, izlistavanje pretrage sa termom i prikaz pojedinačno article
+            * Izvještaj se nalazi u dokumentu postman-izvjestaj.pdf u root direktoriju
+            
+        II) Nije urađeno:
+            --
+            
+        III & IV) Bugovi
+            --
+            
+        V) Fajlovi:
+            * brains/global.php - konekcija na bazu podataka
+            * services.php - servisi
+            * xmltosql.php - prebacivanje fajlova iz XML u Bazu
+            
+            
 
 
